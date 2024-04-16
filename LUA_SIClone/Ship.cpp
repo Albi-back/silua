@@ -17,6 +17,7 @@ Description: Source file for Ship class
 //Constructor
 Ship::Ship( int xpos, int ypos, string filename)
 {
+	
 	m_xpos = xpos;
 	m_ypos = ypos;
 	m_direction_flag = true;
@@ -44,6 +45,7 @@ Ship::~Ship()
 		if(m_ship_images[i] != NULL)al_destroy_bitmap(m_ship_images[i]);
 	}
 	m_ship_images.clear();
+	lua_close(L);
 }
 
 //Methods
@@ -58,13 +60,6 @@ void Ship::left(void)
 		m_current_frame = 0;
 }
 
-void Ship::right(void)
-{
-	m_xpos = m_xpos+5;
-	if (m_xpos >= 910) m_xpos = 910;
-	if (m_current_frame > 1.9)
-		m_current_frame = 0;
-}
 
 void Ship::down(void)
 {

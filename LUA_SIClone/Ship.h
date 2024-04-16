@@ -16,6 +16,7 @@ Description: Header file for Ship class
 #include <string>
 #include "Game.h"
 #include <vector>
+#include "LuaHelper.h"
 
 using namespace std;
 
@@ -28,7 +29,7 @@ protected:
 	vector<ALLEGRO_BITMAP*> m_ship_images;
 	float m_current_frame;
 	float m_direction_flag;
-
+	lua_State* L = luaL_newstate();
 public:
 	//constructor
 	Ship( int xpos, int ypos, string filename);
@@ -40,7 +41,7 @@ public:
 	int getX();
 	int getY();
 	void left();
-	void right();
+	
 	void down();
 	void draw(void);
 	void addFrame(string filename);

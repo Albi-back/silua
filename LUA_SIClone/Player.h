@@ -21,6 +21,7 @@ private:
 	//members
 	int m_lives;
 	int m_score;
+	lua_State* L = luaL_newstate();
 
 public:
 	//constructor
@@ -36,4 +37,6 @@ public:
 	void kill();
 	void reset_lives();
 	void reset_score();
+	void right();
+
 };

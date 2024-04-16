@@ -114,8 +114,8 @@ int main()
 						{
 							if (DynamicUfoArray[y][x] != nullptr)
 							{
-								laser_generator = randomNumber();
-								if (laser_generator >= 41 - (ufo_counter / 3) && laser_generator <= 50 + (ufo_counter / 3))
+								laser_generator = CallRandomNumber(L, "randomNumber");
+								if (laser_generator >= 9996)
 								{
 									for (int i = 0; i < 10; i++)
 									{
@@ -135,8 +135,8 @@ int main()
 
 					if (the_mothership == NULL)//see if a mothership appears
 					{
-						Mothership_chance = randomNumber();
-						if (Mothership_chance >= 250 && Mothership_chance <= 255)
+						Mothership_chance = CallRandomNumber(L, "randomNumber");
+						if (Mothership_chance >= 9990)
 						{
 							the_mothership = new Mothership(0, 20, "assets/Mothership.bmp");
 							the_mothership->addFrame("assets/Mothership.bmp");

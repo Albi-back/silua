@@ -1,4 +1,8 @@
-﻿  LuaHelper.cpp
+﻿  Mothership.cpp
+  Player.cpp
+  Scene.cpp
+  Ship.cpp
+  Ufo.cpp
   main.cpp
   Generating Code...
   LUA_SIClone.vcxproj -> C:\Users\Albi\Desktop\LUA_Attack\Debug\LUA_SIClone.exe

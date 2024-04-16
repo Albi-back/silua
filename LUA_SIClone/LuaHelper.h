@@ -45,3 +45,8 @@ struct Vector2
         lua_pop(L, 1);
     }
 };
+int CallRandomNumber(lua_State* L, const std::string& fname);
+
+
+void CallmoveRight(lua_State* L, const std::string& fname, float& xVal, float& frameVal);
+
