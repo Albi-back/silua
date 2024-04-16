@@ -15,6 +15,7 @@ Description:main
 #include "Ufo.h"
 #include "laser.h"
 #include "Mothership.h"
+#include "LuaHelper.h"
 
 using namespace std;
 //globals ***maybe add to a class along with the functions below??***
@@ -31,13 +32,17 @@ void game_start_message();
 
 int main()
 {
+	lua_State* L = luaL_newstate();
+	luaL_openlibs(L);
+	if (!LuaOK(L, luaL_dofile(L, "Script.lua")))
+		assert(false);
 	srand(time(NULL));//Sets the random seed for the whole game
 
 	// DECLARE variables
 	bool is_right = true;//move direction check	
 	int ufo_counter = 0;//how many ufos destroyed (this tells the game when to start a new level)
-	int level_colour = 0;//for setting the background colour for each level and also defines the max number of levels
-	int Level_number = 1;//used for displaying the level number
+	int level_colour = LuaGetInt(L, "colour");//for setting the background colour for each level and also defines the max number of levels
+	int Level_number = LuaGetInt(L, "level");//used for displaying the level number
 	int laser_generator;//chance of ufo firing
 	int Mothership_chance;//chance of mothership appearing
 
@@ -48,8 +53,8 @@ int main()
 	laser* laser_limit[10]{};
 	laser* Ufo_lasers[10]{};
 
-	the_ship = new Player(500, 625, 5, "assets/player0.bmp");//create the player ship
-	the_ship->addFrame("assets/player1.bmp");
+	the_ship = new Player(500, 625, LuaGetInt(L, "lives"), LuaGetStr(L, "playerSprite"));//create the player ship
+	the_ship->addFrame(LuaGetStr(L, "playerSprite"));
 	
 	game_start_message();//DISPLAY THE GAME START MESSAGE 
 	
@@ -424,7 +429,13 @@ int main()
 				break;
 			}
 			if (Input_manager->key_is_pressed(KEY_ESCAPE) || level_colour == 255 || the_ship->getLives() == 0)
+			{
+				lua_close(L);
+				return 0;
 				break;
+			}
+			
+			
 	}
 	///////////////////////////////////////////////
 	//delete the ufo's 

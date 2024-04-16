@@ -18,3 +18,9 @@ extern "C"
 
 //check for errors
 bool LuaOK(lua_State* L, int id);
+
+//get an int from lua
+int LuaGetInt(lua_State* L, const std::string& name);
+
+//get a string from lua
+std::string LuaGetStr(lua_State* L, const std::string& name);
