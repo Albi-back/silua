@@ -32,3 +32,4 @@ std::string LuaGetStr(lua_State* L, const std::string& name)
         assert(false);
     return lua_tostring(L, -1);
 }
+

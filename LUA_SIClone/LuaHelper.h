@@ -24,3 +24,24 @@ int LuaGetInt(lua_State* L, const std::string& name);
 
 //get a string from lua
 std::string LuaGetStr(lua_State* L, const std::string& name);
+
+struct Vector2
+{
+    int x, y;
+
+    void FromLua(lua_State* L, const std::string& name) {
+        lua_getglobal(L, name.c_str());
+        if (!lua_istable(L, -1))
+            assert(false);
+
+        lua_pushstring(L, "x");
+        lua_gettable(L, -2);
+        x = (int)lua_tointeger(L, -1);
+        lua_pop(L, 1);
+
+        lua_pushstring(L, "y");
+        lua_gettable(L, -2);
+        y = (int)lua_tointeger(L, -1);
+        lua_pop(L, 1);
+    }
+};

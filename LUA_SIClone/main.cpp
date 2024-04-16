@@ -29,6 +29,7 @@ void destroyUFOs();
 void spawnUFOs();
 void display_message(const char* message);
 void game_start_message();
+Vector2 pos;
 
 int main()
 {
@@ -36,6 +37,7 @@ int main()
 	luaL_openlibs(L);
 	if (!LuaOK(L, luaL_dofile(L, "Script.lua")))
 		assert(false);
+	pos.FromLua(L, "startpos");
 	srand(time(NULL));//Sets the random seed for the whole game
 
 	// DECLARE variables
@@ -53,7 +55,7 @@ int main()
 	laser* laser_limit[10]{};
 	laser* Ufo_lasers[10]{};
 
-	the_ship = new Player(500, 625, LuaGetInt(L, "lives"), LuaGetStr(L, "playerSprite"));//create the player ship
+	the_ship = new Player(pos.x,pos.y, LuaGetInt(L, "lives"), LuaGetStr(L, "playerSprite"));//create the player ship
 	the_ship->addFrame(LuaGetStr(L, "playerSprite"));
 	
 	game_start_message();//DISPLAY THE GAME START MESSAGE 
