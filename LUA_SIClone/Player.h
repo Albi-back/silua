@@ -41,5 +41,6 @@ public:
 	void reset_lives();
 	void reset_score();
 	void right();
+	void left();
 
 };

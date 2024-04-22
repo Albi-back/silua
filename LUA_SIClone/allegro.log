@@ -1,4 +1,0 @@
-system   D            wsystem.c:583  maybe_parent_dir                 [   0.00044] Also searching C:\Users\Albi\Desktop\LUA_Attack\
-system   D            wsystem.c:633  _al_win_safe_load_library        [   0.00069] PathFindOnPath found: C:\WINDOWS\system32\d3d9.dll
-system   D            wsystem.c:544  load_library_at_path             [   0.00070] Calling LoadLibrary C:\WINDOWS\system32\d3d9.dll
-system   I            wsystem.c:547  load_library_at_path             [   0.00760] Loaded C:\WINDOWS\system32\d3d9.dll

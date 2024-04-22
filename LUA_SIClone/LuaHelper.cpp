@@ -60,6 +60,20 @@ void CallmoveRight(lua_State* L, const std::string& fname, float& xVal, float& f
     lua_pop(L, 2);
 }
 
+void CallmoveLeft(lua_State* L, const std::string& fname, float& xVals, float& frameVals)
+{
+    lua_getglobal(L, fname.c_str());
+    if (!lua_isfunction(L, -1))
+        assert(false);
+    lua_pushnumber(L, xVals);
+    lua_pushnumber(L, frameVals);
+    if (!LuaOK(L, lua_pcall(L, 2, 2, 0)))//calls a function
+        assert(false);
+    xVals = (float)lua_tonumber(L, -2);
+    frameVals - (float)lua_tonumber(L, -1);
+    lua_pop(L, 2);
+}
+
 void CallVoidVoidCFunc(lua_State* L, const std::string& fname)
 {
     lua_getglobal(L, fname.c_str());

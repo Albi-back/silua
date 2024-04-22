@@ -40,7 +40,7 @@ public:
 	void setY(int yVal);
 	int getX();
 	int getY();
-	void left();
+	//void left();
 	
 	void down();
 	void draw(void);
