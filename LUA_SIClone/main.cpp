@@ -27,7 +27,7 @@ int x, y;//used for ufo array coordinates
 int randomNumber();//random number generator
 void destroyUFOs();
 void spawnUFOs();
-void display_message(const char* message);
+int display_message(lua_State* L);
 void game_start_message();
 Vector2 pos;
 
@@ -35,11 +35,12 @@ int main()
 {
 	lua_State* L = luaL_newstate();
 	luaL_openlibs(L);
+	lua_register(L, "display_message", display_message);
 	if (!LuaOK(L, luaL_dofile(L, "Script.lua")))
 		assert(false);
 	pos.FromLua(L, "startpos");
 	srand(time(NULL));//Sets the random seed for the whole game
-
+	
 	// DECLARE variables
 	bool is_right = true;//move direction check	
 	int ufo_counter = 0;//how many ufos destroyed (this tells the game when to start a new level)
@@ -47,7 +48,7 @@ int main()
 	int Level_number = LuaGetInt(L, "level");//used for displaying the level number
 	int laser_generator;//chance of ufo firing
 	int Mothership_chance;//chance of mothership appearing
-
+	
 	Game_manager = new Game();
 	Input* Input_manager = new Input();
 	DynamicUfoArray = new Ufo**[5] {};
@@ -403,12 +404,12 @@ int main()
 					{
 						if (level_colour == 255)
 						{
-							display_message("You Win!!!");
+							CallVoidVoidCFunc(L,"callMessage");
 						}
 						else
 						if (level_colour != 255)
 						{
-							display_message("Next Level...");
+							CallVoidVoidCFunc(L, "callMessage2");
 							al_flush_event_queue(Input_manager->Get_event());//clears the queue of events
 							for (int i = 0; i < 10; i++)//delete the lasers
 							{
@@ -505,9 +506,17 @@ void spawnUFOs()
 	}
 }
 
-void display_message(const char* message)
+
+
+
+
+
+int display_message( lua_State* L)
 {
-	for (int i = 1; i <= 10; i++)//DISPLAY THE GAME OVER MESSAGE *maybe in a method or function?*
+	const char* message = lua_tostring(L, 1);
+	int time = lua_tointeger(L, 2);
+		
+	for (int i = 1; i <= time; i++)//DISPLAY THE GAME OVER MESSAGE *maybe in a method or function?*
 	{
 		al_clear_to_color(al_map_rgb(125, 125, 125)); // colour entire display with rgb colour
 		al_draw_textf(Game_manager->message(), al_map_rgb(100, 250, 50), 300, 300, 0, message);
@@ -522,6 +531,8 @@ void display_message(const char* message)
 		al_flip_display();
 		al_rest(0.25);
 	}
+	lua_pop(L, 2);
+	return 1;
 }
 
 void game_start_message()

@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "LuaHelper.h"
+
 using namespace std;
 
 
@@ -58,3 +59,13 @@ void CallmoveRight(lua_State* L, const std::string& fname, float& xVal, float& f
     frameVal - (float)lua_tonumber(L, -1);
     lua_pop(L, 2);
 }
+
+void CallVoidVoidCFunc(lua_State* L, const std::string& fname)
+{
+    lua_getglobal(L, fname.c_str());
+        if (!lua_isfunction(L, -1))
+            assert(false);
+        if (!LuaOK(L, lua_pcall(L, 0, 0, 0)))
+            assert(false);
+}
+
