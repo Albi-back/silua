@@ -15,12 +15,17 @@ end
 
 function callMessage()
 	display_message("Get a Life", 1)
-	
-	end
+end
 function callMessage2()
-    display_message("Next level",1 )
-	end 
+    display_message("Next Level",1 )
+end 
 
+
+
+
+function setPlayerScore()
+	CDispatcher("setScore", 5000)
+end
 
 
 

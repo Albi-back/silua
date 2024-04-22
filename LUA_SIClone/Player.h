@@ -27,7 +27,10 @@ public:
 	//constructor
 	Player(float xPos, float yPos, int lives, string filename);
 	~Player(void);
-
+	void Init(Dispatcher& disp) {
+		Dispatcher::Command::voidintfunc f{ [this](int score) {return setScore(score); } };
+		disp.Register("setScore", Dispatcher::Command{ f });
+	}
 	//methods
 	void reduceLives();
 	void increaseLives();

@@ -69,3 +69,21 @@ void CallVoidVoidCFunc(lua_State* L, const std::string& fname)
             assert(false);
 }
 
+std::map<string, Dispatcher::Command> Dispatcher::library;
+
+int Dispatcher::LuaCall(lua_State* L)
+{
+    string name = lua_tostring(L, 1);
+    std::map<string, Command>::iterator it = library.find(name);
+    assert(it != library.end());
+    Command& cmd = (*it).second;
+    if (cmd.voidintfunct)
+    {
+        int param = lua_tointeger(L, 2);
+        cmd.voidintfunct(param);
+        lua_pop(L, 1);
+    }
+    else
+        assert(false);
+    return 1;
+}

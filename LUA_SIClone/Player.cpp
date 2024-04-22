@@ -58,6 +58,7 @@ int Player::getLives()
 void Player::setScore(int score)
 {
 	m_score = m_score + score;
+	
 }
 
 void Player::kill()
@@ -77,4 +78,5 @@ void Player::reset_score()
 void Player::right(void)
 {
 	CallmoveRight(L, "right", m_xpos, m_current_frame);
+	
 }
