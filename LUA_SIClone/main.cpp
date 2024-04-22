@@ -143,8 +143,8 @@ int main()
 						Mothership_chance = CallRandomNumber(L, "randomNumber");
 						if (Mothership_chance >= 9990)
 						{
-							the_mothership = new Mothership(0, 20, "assets/Mothership.bmp");
-							the_mothership->addFrame("assets/Mothership.bmp");
+							the_mothership = new Mothership(0, 20, (LuaGetStr(L, "motherShipSprite")));
+							the_mothership->addFrame(LuaGetStr(L, "motherShipSprite"));
 						}
 					}
 					if (the_mothership != NULL)//draw and move the mothership
