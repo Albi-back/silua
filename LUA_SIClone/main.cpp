@@ -107,7 +107,7 @@ int main()
 						{
 							if (laser_limit[i] == NULL)
 							{
-								laser_limit[i] = new laser(the_ship->getX() + 44, the_ship->getY(), "assets/PlayerLaser.bmp");
+								laser_limit[i] = new laser(the_ship->getX() + 44, the_ship->getY(), (LuaGetStr(L, "playerLaser")));
 								break;
 							}
 						}
@@ -126,7 +126,7 @@ int main()
 									{
 										if (Ufo_lasers[i] == NULL)
 										{
-											Ufo_lasers[i] = new laser(DynamicUfoArray[y][x]->getX() + 35, DynamicUfoArray[y][x]->getY() + 53, "assets/PlayerLaser.bmp");
+											Ufo_lasers[i] = new laser(DynamicUfoArray[y][x]->getX() + 35, DynamicUfoArray[y][x]->getY() + 53, (LuaGetStr(L, "playerLaser")));
 											break;
 										}
 									}
