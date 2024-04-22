@@ -30,13 +30,16 @@ end
 
 
 
-colour = 100
-level = 1
-lives = 100
-playerSprite = "assets/ufoph.bmp"
-motherShipSprite =  "assets/Mothership.bmp"
-playerLaser= "assets/PlayerLaser.bmp"
-ufoCounter = 0
-startpos  = {x=0, y=0}
-startpos.x = 500
-startpos.y = 550
+colour = 100                                    -- sets the colour value of the level backdrop
+level = 1                                       -- sets the level number
+lives = 100                                     -- sets the player lives
+playerSprite = "assets/ufoph.bmp"				-- sets the string to the adress of the file of the player sprite- interchangeable as long as file keeps the same name
+motherShipSprite =  "assets/Mothership.bmp"		-- sets the string to the adress of the file of the mothership sprite- interchangeable as long as file keeps the same name
+playerLaser= "assets/PlayerLaser.bmp"			-- sets the string to the adress of the file of the laser projectile- interchangeable as long as file keeps the same name
+ufoCounter = 0									-- sets the initial value of ufo counter
+startpos  = {x=0, y=0}							-- initial postional value for the player
+startpos.x = 500								-- sets x value for the start pos variable
+startpos.y = 550								-- sets y value for the start pos variable 
+mlives = 10                                     -- mothership lives 
+mxpos = 0 
+mypos = 0

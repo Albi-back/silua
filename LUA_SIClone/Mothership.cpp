@@ -9,15 +9,24 @@ Description: Source file for Mothership class
 */
 
 #include "Mothership.h"
+#include "LuaHelper.h"
 #include <stdio.h>
+using namespace std;
+
+
 
 //Constructor
 Mothership::Mothership(float xPos, float yPos, string filename)
 	:Ship(xPos, yPos, filename)
-{	
-	m_lives = 10;
-	m_xpos = xPos;
-	m_ypos = yPos;
+{
+	lua_State* L = luaL_newstate();
+	luaL_openlibs(L);
+	if (!LuaOK(L, luaL_dofile(L, "Script.lua")))
+		assert(false);
+	
+	m_lives = LuaGetInt(L,"mlives");
+	m_xpos = LuaGetInt(L, "mxpos");
+	m_ypos = LuaGetInt(L, "mypos");
 }
 
 Mothership::~Mothership()
