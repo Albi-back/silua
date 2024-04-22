@@ -52,6 +52,7 @@ void CallmoveRight(lua_State* L, const std::string& fname, float& xVal, float& f
 
 void CallVoidVoidCFunc(lua_State* L, const std::string& fname);
 
+
 class Dispatcher {
 public:
     struct Command {

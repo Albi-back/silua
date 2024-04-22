@@ -43,7 +43,7 @@ int main()
 	
 	// DECLARE variables
 	bool is_right = true;//move direction check	
-	int ufo_counter = 0;//how many ufos destroyed (this tells the game when to start a new level)
+	int ufo_counter = LuaGetInt(L, "ufoCounter");//how many ufos destroyed (this tells the game when to start a new level)
 	int level_colour = LuaGetInt(L, "colour");//for setting the background colour for each level and also defines the max number of levels
 	int Level_number = LuaGetInt(L, "level");//used for displaying the level number
 	int laser_generator;//chance of ufo firing
@@ -53,6 +53,7 @@ int main()
 	Input* Input_manager = new Input();
 	DynamicUfoArray = new Ufo**[5] {};
 	Mothership* the_mothership = NULL;
+
 	laser* laser_limit[10]{};
 	laser* Ufo_lasers[10]{};
 
