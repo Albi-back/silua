@@ -31,7 +31,7 @@ function callMessage2()
 end 										    
 
 function startMessage()
-    game_start_message("GET READY!!!", 3)
+    startMessages("GET READY!!!", 3)
 end
 
 

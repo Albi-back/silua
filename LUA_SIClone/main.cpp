@@ -35,7 +35,7 @@ int main()
 	lua_State* L = luaL_newstate();
 	luaL_openlibs(L);
 	lua_register(L, "display_message", display_message);
-	lua_register(L, "startMessage", game_start_message);
+	lua_register(L, "startMessages", game_start_message);
 	if (!LuaOK(L, luaL_dofile(L, "Script.lua")))
 		assert(false);
 	pos.FromLua(L, "startpos");
@@ -65,7 +65,7 @@ int main()
 	the_ship->Init(disp);
 	
 
-	//CallVoidVoidCFunc(L, "startMessage");//DISPLAY THE GAME START MESSAGE 
+	CallVoidVoidCFunc(L, "startMessage");//DISPLAY THE GAME START MESSAGE 
 	
 	while (the_ship->getLives() > 0)// keep going until the ship is dead
 	{			
@@ -539,7 +539,7 @@ int display_message( lua_State* L)
 	return 1;
 }
 
-int game_start_message(lua_State* L)
+int game_start_message( lua_State* L)
 {
 	const char* message = lua_tostring(L, 1);
 	int time = lua_tointeger(L, 2);
