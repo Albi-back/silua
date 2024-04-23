@@ -2,6 +2,7 @@ math.randomseed(os.time())
 function randomNumber()
 	return math.random(1,10000)
 end
+--moves ths ship right
 function right(x, currentFrame)
 	x = x+5
 	if(x >= 910)then                             -- checks if x >= 910 an dif its true x is set to 910
@@ -12,6 +13,7 @@ function right(x, currentFrame)
 	end
 	return x, currentFrame
 end
+-- moves the ship left
 function left(x, currentFrame)
 	x = x-5 
 	if(x<= -5)then                              -- checks if x <= -5 an dif its true x is set to -5
