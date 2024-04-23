@@ -29,7 +29,12 @@ end
 function callMessage2()						    
     display_message("Next Level",1 )		    --displays message next level
 end 										    
-											    
+
+function startMessage()
+    game_start_message("GET READY!!!", 3)
+end
+
+
 											    
 											    
 											    

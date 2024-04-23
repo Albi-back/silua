@@ -1,4 +1,2 @@
-﻿  LuaHelper.cpp
-C:\Users\Albi\Desktop\LUA_Attack\LUA_SIClone\LuaHelper.cpp(59,14): warning C4552: '-': result of expression not used
-C:\Users\Albi\Desktop\LUA_Attack\LUA_SIClone\LuaHelper.cpp(73,14): warning C4552: '-': result of expression not used
+﻿  main.cpp
   LUA_SIClone.vcxproj -> C:\Users\Albi\Desktop\LUA_Attack\Debug\LUA_SIClone.exe
