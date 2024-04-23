@@ -53,7 +53,11 @@ lives = 100                                     -- sets the player lives
 playerSprite = "assets/ufoph.bmp"				-- sets the string to the adress of the file of the player sprite- interchangeable as long as file keeps the same name
 motherShipSprite =  "assets/Mothership.bmp"		-- sets the string to the adress of the file of the mothership sprite- interchangeable as long as file keeps the same name
 playerLaser= "assets/PlayerLaser.bmp"			-- sets the string to the adress of the file of the laser projectile- interchangeable as long as file keeps the same name
-ufoCounter = 0									-- sets the initial value of ufo counter
+------------
+--DO NOT CHANGE 
+ufoCounter = 0									-- sets the initial value of ufo counter DO NOT CHANGE ERROR WILL HAPPEN
+--DO NOT CHANGE 
+------------
 startpos  = {x=0, y=0}							-- initial postional value for the player
 startpos.x = 500								-- sets x value for the start pos variable
 startpos.y = 550								-- sets y value for the start pos variable 
