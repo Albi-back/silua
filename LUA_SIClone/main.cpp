@@ -34,11 +34,11 @@ int main()
 {
 	lua_State* L = luaL_newstate();
 	luaL_openlibs(L);
-	lua_register(L, "display_message", display_message);
-	lua_register(L, "startMessages", game_start_message);
+	lua_register(L, "display_message", display_message);  // registers the C function with lua "display_message" is that lua will interpret the c funtion as and display message(outside of quotation) is the name of the variable in C
+	lua_register(L, "startMessages", game_start_message);  // a better example is present here when the 2 functions are given names "startMessages" is what lua will call the function as and game_start_messages is what the function is called in C
 	if (!LuaOK(L, luaL_dofile(L, "Script.lua")))
 		assert(false);
-	pos.FromLua(L, "startpos");
+	pos.FromLua(L, "startpos");  // reads the startpos variable from lua 
 	srand(time(NULL));//Sets the random seed for the whole game
 	
 	// DECLARE variables
@@ -61,8 +61,8 @@ int main()
 	the_ship->addFrame(LuaGetStr(L, "playerSprite"));
 
 	Dispatcher disp;
-	disp.Init(L);
-	the_ship->Init(disp);
+	disp.Init(L);           //initialises the dispatcher
+	the_ship->Init(disp);      
 	
 
 	CallVoidVoidCFunc(L, "startMessage");//DISPLAY THE GAME START MESSAGE 
@@ -109,7 +109,7 @@ int main()
 						{
 							if (laser_limit[i] == NULL)
 							{
-								laser_limit[i] = new laser(the_ship->getX() + 44, the_ship->getY(), (LuaGetStr(L, "playerLaser")));
+								laser_limit[i] = new laser(the_ship->getX() + 44, the_ship->getY(), (LuaGetStr(L, "playerLaser"))); //uses the lua string playerLaser which is the file location for the player laser sprite 
 								break;
 							}
 						}
@@ -128,7 +128,7 @@ int main()
 									{
 										if (Ufo_lasers[i] == NULL)
 										{
-											Ufo_lasers[i] = new laser(DynamicUfoArray[y][x]->getX() + 35, DynamicUfoArray[y][x]->getY() + 53, (LuaGetStr(L, "playerLaser")));
+											Ufo_lasers[i] = new laser(DynamicUfoArray[y][x]->getX() + 35, DynamicUfoArray[y][x]->getY() + 53, (LuaGetStr(L, "playerLaser"))); //uses the lua string playerLaser which is the file location for the player laser sprite 
 											break;
 										}
 									}
@@ -145,8 +145,8 @@ int main()
 						Mothership_chance = CallRandomNumber(L, "randomNumber");
 						if (Mothership_chance >= 9990)
 						{
-							the_mothership = new Mothership(0, 20, (LuaGetStr(L, "motherShipSprite")));
-							the_mothership->addFrame(LuaGetStr(L, "motherShipSprite"));
+							the_mothership = new Mothership(0, 20, (LuaGetStr(L, "motherShipSprite"))); //uses the lua string "mothesrShipSprite" to access the file destination for the sprite
+							the_mothership->addFrame(LuaGetStr(L, "motherShipSprite")); // //uses the lua string "mothesrShipSprite" to access the file destination for the sprite
 						}
 					}
 					if (the_mothership != NULL)//draw and move the mothership
@@ -520,7 +520,7 @@ int display_message( lua_State* L)
 	const char* message = lua_tostring(L, 1);
 	int time = lua_tointeger(L, 2);
 		
-	for (int i = 1; i <= time; i++)//DISPLAY THE GAME OVER MESSAGE *maybe in a method or function?*
+	for (int i = 1; i <= time; i++)//DISPLAY THE GAME OVER MESSAGE 
 	{
 		al_clear_to_color(al_map_rgb(125, 125, 125)); // colour entire display with rgb colour
 		al_draw_textf(Game_manager->message(), al_map_rgb(100, 250, 50), 300, 300, 0, message);
@@ -543,24 +543,24 @@ int game_start_message( lua_State* L)
 {
 	const char* message = lua_tostring(L, 1);
 	int time = lua_tointeger(L, 2);
-	for (int i = 1; i <= time; i++)
+	for (int i = 1; i <= time; i++) //displays the start message
 	{
 		al_clear_to_color(al_map_rgb(125, 125, 125)); // colour entire display with rgb colour
-		al_draw_textf(Game_manager->message(), al_map_rgb(255, 0, 0), 300, 300, 0, message);
+		al_draw_textf(Game_manager->message(), al_map_rgb(255, 0, 0), 300, 300, 0, message);// displays the variable message in the given colour
 		al_flip_display();
 		al_rest(0.25);
 		al_clear_to_color(al_map_rgb(125, 125, 125)); // colour entire display with rgb colour
-		al_draw_textf(Game_manager->message(), al_map_rgb(0, 0, 0), 300, 300, 0, message);
+		al_draw_textf(Game_manager->message(), al_map_rgb(0, 0, 0), 300, 300, 0, message);// displays the variable message in the given colour
 		al_flip_display();
 		al_rest(0.25);
 	}
-	for (int i = 5; i >= 0; i--)//DISPLAY THE GAME START MESSAGE *maybe in a method or function?*
+	for (int i = 5; i >= 0; i--)//DISPLAY THE GAME START MESSAGE 
 	{
 		al_clear_to_color(al_map_rgb(125, 125, 125)); // colour entire display with rgb colour
-		al_draw_textf(Game_manager->message(), al_map_rgb(0, 255, 0), 300, 300, 0, message, i);
+		al_draw_textf(Game_manager->message(), al_map_rgb(0, 255, 0), 300, 300, 0, message, i);// displays the variable message in the given colour
 		al_flip_display();
 		al_rest(1.0);
 	}
-	lua_pop(L, 2);
+	lua_pop(L, 2); 
 	return 1;
 }
