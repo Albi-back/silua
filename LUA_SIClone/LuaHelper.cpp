@@ -40,7 +40,7 @@ int CallRandomNumber(lua_State* L, const string& fname)
     lua_getglobal(L, fname.c_str());
     if (!lua_isfunction(L, -1))
         assert(false);
-    if (!LuaOK(L, lua_pcall(L, 0, 1, 0)))//calls a function
+    if (!LuaOK(L, lua_pcall(L, 0, 1, 0)))//calls a function in protected mode. (state, number of parameters, numbe rof return values, errorfunc)
         assert(false);
     int result = (int)lua_tointeger(L, -1);
     lua_pop(L, 1);
@@ -53,26 +53,28 @@ void CallmoveRight(lua_State* L, const std::string& fname, float& xVal, float& f
         assert(false);
     lua_pushnumber(L, xVal);
     lua_pushnumber(L, frameVal);
-    if(!LuaOK(L, lua_pcall(L, 2, 2,0)))//calls a function
+    if(!LuaOK(L, lua_pcall(L, 2, 2,0)))                                                     //calls a function in protected mode. (state, number of parameters, numbe rof return values, errorfunc)
         assert(false);
     xVal =(float) lua_tonumber(L, -2);
     frameVal - (float)lua_tonumber(L, -1);
     lua_pop(L, 2);
 }
 
-void CallmoveLeft(lua_State* L, const std::string& fname, float& xVals, float& frameVals)
+void CallmoveLeft(lua_State* L, const std::string& fname, float& xVal, float& frameVal)
 {
-    lua_getglobal(L, fname.c_str());
+        lua_getglobal(L, fname.c_str());
     if (!lua_isfunction(L, -1))
         assert(false);
-    lua_pushnumber(L, xVals);
-    lua_pushnumber(L, frameVals);
-    if (!LuaOK(L, lua_pcall(L, 2, 2, 0)))//calls a function
+    lua_pushnumber(L, xVal);
+    lua_pushnumber(L, frameVal);
+    if (!LuaOK(L, lua_pcall(L, 2, 2, 0)))                                                    //calls a function in protected mode. (state, number of parameters, number of return values, errorfunc)
         assert(false);
-    xVals = (float)lua_tonumber(L, -2);
-    frameVals - (float)lua_tonumber(L, -1);
+    xVal = (float)lua_tonumber(L, -2);
+    frameVal - (float)lua_tonumber(L, -1);
     lua_pop(L, 2);
 }
+
+
 
 void CallVoidVoidCFunc(lua_State* L, const std::string& fname)
 {

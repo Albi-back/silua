@@ -50,7 +50,7 @@ int CallRandomNumber(lua_State* L, const std::string& fname);
 
 void CallmoveRight(lua_State* L, const std::string& fname, float& xVal, float& frameVal);
 
-void CallmoveLeft(lua_State* L, const std::string& fname, float& xVals, float& frameVals);
+void CallmoveLeft(lua_State* L, const std::string& fname, float& xVal, float& frameVal);
 
 void CallVoidVoidCFunc(lua_State* L, const std::string& fname);
 

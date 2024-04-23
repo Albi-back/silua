@@ -14,8 +14,8 @@ function right(x, currentFrame)
 end
 function left(x, currentFrame)
 	x = x-5 
-	if(x >= x<= -5)then 
-		x = -5
+	if(x<= -5)then 
+		x =  -5
 	end
 	if (currentFrame > 1.9)then 
 		currentFrame = 0
