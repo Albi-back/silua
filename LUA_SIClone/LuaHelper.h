@@ -45,14 +45,14 @@ struct Vector2
         lua_pop(L, 1);
     }
 };
-int CallRandomNumber(lua_State* L, const std::string& fname);
+int CallRandomNumber(lua_State* L, const std::string& fname);  // function that calls a random number 
 
 
-void CallmoveRight(lua_State* L, const std::string& fname, float& xVal, float& frameVal);
+void CallmoveRight(lua_State* L, const std::string& fname, float& xVal, float& frameVal);// function that moves right 
 
-void CallmoveLeft(lua_State* L, const std::string& fname, float& xVal, float& frameVal);
+void CallmoveLeft(lua_State* L, const std::string& fname, float& xVal, float& frameVal);// funtion that moves the player left
 
-void CallVoidVoidCFunc(lua_State* L, const std::string& fname);
+void CallVoidVoidCFunc(lua_State* L, const std::string& fname);   
 
 
 class Dispatcher {
