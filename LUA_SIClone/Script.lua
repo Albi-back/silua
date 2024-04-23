@@ -25,14 +25,14 @@ function left(x, currentFrame)
 	return x, currentFrame
 end
 
-function callMessage()
+function callMessage()--C function
 	display_message("Get a Life", 1)            --displays message get a life
 end											    
-function callMessage2()						    
+function callMessage2()--C function						    
     display_message("Next Level",1 )		    --displays message next level
 end 										    
 
-function startMessage()
+function startMessage()--C function
     startMessages("GET READY!!!", 3)                --displays the Get ready message 
 end
 
