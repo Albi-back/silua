@@ -2,7 +2,7 @@ new variables that were added to the lua script
 
 in main.cpp:
 
-ufocounter variable, counts how many ufos are still on the screen, sets the start value in lua and is manipulated through C++ DO NOT CHAGE 
+ufocounter variable, counts how many ufos are still on the screen, sets the start value in lua and is manipulated through C++ DO NOT CHANGE 
 
 playerlaser variable, is the file adress of the player laser sprite for when the player shoots, this makes the file easily adjustable without changing the source code 
 
