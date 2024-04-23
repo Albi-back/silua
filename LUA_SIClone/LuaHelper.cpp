@@ -46,7 +46,7 @@ int CallRandomNumber(lua_State* L, const string& fname)
     lua_pop(L, 1);
     return result;
 }
-void CallmoveRight(lua_State* L, const std::string& fname, float& xVal, float& frameVal)
+void CallmoveRight(lua_State* L, const std::string& fname, float& xVal, float& frameVal)  // calls the move right funtion
 {
         lua_getglobal(L, fname.c_str());
     if (!lua_isfunction(L, -1))
@@ -60,7 +60,7 @@ void CallmoveRight(lua_State* L, const std::string& fname, float& xVal, float& f
     lua_pop(L, 2);
 }
 
-void CallmoveLeft(lua_State* L, const std::string& fname, float& xVal, float& frameVal)
+void CallmoveLeft(lua_State* L, const std::string& fname, float& xVal, float& frameVal) // calls the move left function
 {
         lua_getglobal(L, fname.c_str());
     if (!lua_isfunction(L, -1))
