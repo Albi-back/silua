@@ -4,7 +4,7 @@ function randomNumber()
 end
 function right(x, currentFrame)
 	x = x+5
-	if(x >= 910)then 
+	if(x >= 910)then                             -- checks if x >= 910 an dif its true x is set to 910
 		x=910
 	end
 	if (currentFrame > 1.9)then 
@@ -14,7 +14,7 @@ function right(x, currentFrame)
 end
 function left(x, currentFrame)
 	x = x-5 
-	if(x<= -5)then 
+	if(x<= -5)then                              -- checks if x <= -5 an dif its true x is set to -5
 		x =  -5
 	end
 	if (currentFrame > 1.9)then 
@@ -31,7 +31,7 @@ function callMessage2()
 end 										    
 
 function startMessage()
-    startMessages("GET READY!!!", 3)
+    startMessages("GET READY!!!", 3)                --displays the Get ready message 
 end
 
 
@@ -39,7 +39,7 @@ end
 											    
 											    
 function setPlayerScore()					    
-	CDispatcher("setScore", 5000)			    
+	CDispatcher("setScore", 5000)		    -- adds 5000 to the score when the function is called 	    
 end											    
 											    
 											    
