@@ -24,7 +24,7 @@ Mothership::Mothership(float xPos, float yPos, string filename)
 	if (!LuaOK(L, luaL_dofile(L, "Script.lua")))
 		assert(false);
 	
-	m_lives = LuaGetInt(L,"mlives");
+	m_lives = LuaGetInt(L,"mlives"); //uses the lua variable, mlives
 	m_xpos = LuaGetInt(L, "mxpos");
 	m_ypos = LuaGetInt(L, "mypos");
 }
